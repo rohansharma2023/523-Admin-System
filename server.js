@@ -1,3 +1,31 @@
-// this is our node js
-print("Aaron Liang"); //rohans
-//Shuyi Chen
+const {MongoClient} = require('mongodb');
+
+async function main() {
+	const uri = "mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+
+    try{
+    await client.connect();
+
+    await listDatabases(client);
+
+    } catch(e){
+        console.error(e);
+    } finally{
+        await client.close();
+    }
+
+}
+
+async function listDatabases(client){
+    const databasesList = await client.db().admin().listDatabases();
+ 
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
+
+main().catch(console.error);
+
+
+
+
