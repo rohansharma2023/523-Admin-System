@@ -1,18 +1,22 @@
-const express = require('express')
-const mongoose = require("mongoose")
-const app = express()
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const app = express();
 
 const foodModel = require("./models/Food");
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
 
 });
 
-app.get('/', async(req, res) => {
-    const food = new foodModel({foodName: "Apple", daysSinceIAte: 3});
+app.post("/insert", async(req, res) => {
+    const foodName = req.body.foodName;
+    const days = req.body.days
+    const food = new foodModel({foodName: foodName, daysSinceIAte: days});
 
     try {
         await food.save();
