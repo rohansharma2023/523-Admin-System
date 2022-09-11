@@ -8,7 +8,7 @@ const foodModel = require("./models/Food");
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/food?retryWrites=true&w=majority", {
     useNewUrlParser: true,
 
 });
