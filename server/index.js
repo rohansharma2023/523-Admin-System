@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express(); 
 
 const foodModel = require("./models/Food");
+const proposalModel = require("./models/Proposal");
 
 app.use(express.json());
 app.use(cors());
@@ -54,6 +55,25 @@ app.delete("/delete/:id", async(req, res)=>{
     const id = req.params.id;
     await foodModel.findByIdAndRemove(id).exec();
     res.send("deleted");
+});
+
+
+
+app.get("/readProposal", async(req, res) => {
+    // proposalModel.find({}, (err, result)=>{
+    //     if (err) {
+    //         res.send(err);
+    //     }
+    //     console.log("hello")
+    //     res.send(result);
+    // })
+    proposalModel.find({}, (err, result)=>{
+        if (err) {
+            res.send(err);
+        }
+        
+        res.send(result);
+    })
 });
 
 app.listen(3001, ()=>{

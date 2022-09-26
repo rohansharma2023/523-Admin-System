@@ -9,7 +9,7 @@ function Navbar(props) {
         <div className="navbar">
             <ul>
                 <li>          
-                    <i class="material-icons">book</i>
+                    <i className="material-icons">book</i>
                     <a href="#home">Proposals</a></li>
                 <li>
                     <a href="#news">Login</a>
