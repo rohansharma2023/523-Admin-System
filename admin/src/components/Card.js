@@ -6,7 +6,7 @@ function Card(props) {
     let status = props.status;
     let color = props.status == 'limbo' ? '#e57373' : props.status =='accepted'? '#43a047' : props.status == 'open' ? '#00897b' : props.status == 'denied' ? '#d32f2f' : null
     return (
-        <div className={`${css} waves-effect`} onMouseEnter = {() => setCss("proposalCardHover")} onMouseLeave = {() => setCss("proposalCard")}>
+        <div className={`${css} waves-effect waves-teal`} onMouseEnter = {() => setCss("proposalCardHover")} onMouseLeave = {() => setCss("proposalCard")}>
             <p className="title">{props.title}</p>
             <p className="email">From: {props.email} </p>
 
