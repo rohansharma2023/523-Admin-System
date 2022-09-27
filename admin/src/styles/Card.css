@@ -1,0 +1,83 @@
+.proposalCard{
+    
+    background-color: white;
+    width:50%;
+    height:230px;
+    padding:20px;
+    float:left;
+    border-radius:10px;
+    transition:0.25s ease-in-out
+
+
+    
+}
+.proposalCardHover{
+    background-color: #eeeeee;
+    width:50%;
+    height:230px;
+    padding:20px;
+    float:left;
+    border-radius:10px;
+    transition:0.25s ease-in-out
+}
+
+@media (max-width: 810px){
+    .proposalCard{
+    width: 100%;
+    }
+    .proposalCardHover{
+        width: 100%;
+    }
+}
+.title{
+    font-size: 40px;
+    font-weight: bold;
+float:left;
+position: absolute;
+top:-35px
+
+}
+.description{
+    font-size: 25px;
+    font-weight: bold;
+position: absolute;
+text-align: left;
+text-overflow: ellipsis;
+overflow: hidden;
+
+
+top:100px;
+font-weight: 300;
+height:70px;
+overflow-wrap: break-word;
+}
+.email{font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+top:54px;
+text-align: left;
+text-overflow: ellipsis;
+height:20px;
+overflow: hidden;
+white-space: nowrap;
+
+}
+.date{font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+top:173px;
+text-align: left;
+text-overflow: ellipsis;
+height:20px;
+overflow: hidden;
+white-space: nowrap;
+}
+.newstatus{
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+.dateandstatus{
+    position: absolute;
+    top:185px
+}

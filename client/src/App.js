@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 const axios = require('axios').default;
-//import Axios from "axios";
 
 function App() {
     const [foodName, setFoodName] = useState("");

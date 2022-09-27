@@ -6,7 +6,7 @@ const ProposalSchema = new mongoose.Schema({
         required: true,
     },
     description: {
-        type: Number,
+        type: String,
         required: true,
     },
     email: {
@@ -23,5 +23,5 @@ const ProposalSchema = new mongoose.Schema({
     },
 });
 
-const Proposal = mongoose.model("proposal", ProposalSchema);
+const Proposal = mongoose.model("Proposal", ProposalSchema);
 module.exports = Proposal;

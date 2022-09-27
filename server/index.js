@@ -9,9 +9,10 @@ const proposalModel = require("./models/Proposal");
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/food?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
+const dbname = "proposal"
 
+mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/" + dbname + "?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
 });
 
 app.post("/insert", async(req, res) => {
@@ -28,10 +29,11 @@ app.post("/insert", async(req, res) => {
 });
 
 app.get("/read", async(req, res) => {
-    foodModel.find({}, (err, result)=>{
+    proposalModel.find({}, (err, result)=>{
         if (err) {
             res.send(err);
         }
+        
         res.send(result);
     })
 });
@@ -59,22 +61,7 @@ app.delete("/delete/:id", async(req, res)=>{
 
 
 
-app.get("/readProposal", async(req, res) => {
-    // proposalModel.find({}, (err, result)=>{
-    //     if (err) {
-    //         res.send(err);
-    //     }
-    //     console.log("hello")
-    //     res.send(result);
-    // })
-    proposalModel.find({}, (err, result)=>{
-        if (err) {
-            res.send(err);
-        }
-        
-        res.send(result);
-    })
-});
+
 
 app.listen(3001, ()=>{
     console.log("server running on port 3001...");
