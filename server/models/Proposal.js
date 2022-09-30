@@ -21,6 +21,22 @@ const ProposalSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    institution: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    phone_number: {
+        type: String,
+        required: true,
+    },
+    file: {
+        type: String,
+        required: true,
+    },
 });
 
 const Proposal = mongoose.model("Proposal", ProposalSchema);

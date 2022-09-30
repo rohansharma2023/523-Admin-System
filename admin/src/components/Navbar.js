@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Navbar.css'
 import M from 'materialize-css';
-import { BiLogInCircle } from 'react-icons/bi';
+import { FiLogOut } from 'react-icons/fi';
 import { Routes, Route, Link } from "react-router-dom";
 
 
@@ -26,9 +26,9 @@ function Navbar(props) {
 
                 <li  style={{position:'relative',left:"40px"}}>
                 <div className="hover-underline-animation">
-                <div className="iconsLogin"> <BiLogInCircle /></div>
+                <div className="iconsLogin"> <FiLogOut /></div>
 
-                <div className="optionName">Log in</div>  
+                <div className="optionName">Log Out</div>  
                 </div>   
                 </li>
                 </Link>

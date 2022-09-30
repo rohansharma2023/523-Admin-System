@@ -35,6 +35,18 @@ app.get("/read", async(req, res) => {
         }
         
         res.send(result);
+    }) 
+});
+
+app.get("/fetchById/:id", async(req, res) => {
+    const id = req.params.id;
+    
+    proposalModel.find({_id: mongoose.Types.ObjectId(id)}, (err, result)=>{
+        if (err) {
+            res.send(err);
+        }
+        
+        res.send(result);
     })
 });
 
