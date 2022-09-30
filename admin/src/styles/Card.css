@@ -6,7 +6,8 @@
     padding:20px;
     float:left;
     border-radius:10px;
-    transition:0.25s ease-in-out
+    transition:0.25s ease-in-out;
+    margin-top: 10px;
 
 
     
@@ -18,7 +19,9 @@
     padding:20px;
     float:left;
     border-radius:10px;
-    transition:0.25s ease-in-out
+    transition:0.25s ease-in-out;
+    margin-top: 10px;
+
 }
 
 @media (max-width: 810px){
@@ -34,7 +37,8 @@
     font-weight: bold;
 float:left;
 position: absolute;
-top:-35px
+top:-35px;
+color:black
 
 }
 .description{
@@ -44,6 +48,7 @@ position: absolute;
 text-align: left;
 text-overflow: ellipsis;
 overflow: hidden;
+color:black;
 
 
 top:100px;
@@ -60,7 +65,7 @@ text-overflow: ellipsis;
 height:20px;
 overflow: hidden;
 white-space: nowrap;
-
+color:#737272
 }
 .date{font-size: 15px;
     font-weight: 400;
@@ -79,5 +84,6 @@ white-space: nowrap;
 }
 .dateandstatus{
     position: absolute;
-    top:185px
+    top:185px;
+    color:#737272
 }

@@ -4,40 +4,23 @@ import Navbar from './components/Navbar';
 import Card from './components/Card';
 import M from 'materialize-css';
 import Proposal from './components/Proposal'
-const axios = require('axios').default;
+import ProposalList from './components/ProposalList'
+import { Routes, Route, Link } from "react-router-dom";
+
 
 function App() {
 
-    const [proposalList, setProposalList] = useState([]);
-
-    useEffect(()=>{
-        axios.get("http://localhost:3001/read").then((res)=>{
-            console.log(res);
-            setProposalList(res.data);
-        });
-    }, []);
-
+    
     return (
         <div className="App">
             <Navbar/>
-            {/* <div className="container">
 
+            <Routes>
+        <Route path="/" element={<ProposalList />} />
+        <Route path="proposal" element={<Proposal />} />
+      </Routes>
             
-            {proposalList.map((val, key)=>{
-                return (
-                    <div key = {key}>
-                        <Card
-                            title = {val.title} 
-                            description = {val.description}
-                            email = {val.email}
-                            date = {val.date}
-                            status = {val.status}
-                        />
-                    </div>
-                );
-            })}
-            </div> */}
-            <Proposal/>
+            {/* <Proposal/> */}
         </div>
     );
 }

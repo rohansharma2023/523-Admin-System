@@ -1,9 +1,63 @@
 .navbar {
     width: 100%;
-    margin: 0;
+    margin-bottom: -20px;
 
 }
-
+ul{
+    text-align: left;
+    position: relative;
+    left:21px;
+}
 li {
-    display: inline;
+    display: inline-block;
 }
+.icons{
+    display:inline;
+    color: black;
+    position: relative;
+    left: -3px;
+
+}
+.iconsLogin{
+    display:inline;
+    color: black;
+    font-size: 25px;
+    position: relative;
+    bottom: -1px;
+    left: -3px;
+
+
+}
+.optionName{
+    display: inline;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    position: relative;
+    bottom: 3px;
+    left: 1px;
+
+}
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }

@@ -1,0 +1,13 @@
+.bigTitle{
+    font-size: 45px;
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+    left:19px;
+    margin-bottom: 15px;
+    }
+.divider{
+    position: relative;
+    left: 21px;
+    bottom:4px
+}
