@@ -11,7 +11,7 @@ function Card(props) {
             <p className="email">From: {props.email} </p>
 
             <div className="description">{props.description}
-            god damn this is not nice this is truly amazing like literally I cannot believe dis bitch
+            
             </div>
             <div className="dateandstatus">
             Date Posted: {props.date}    <span className="newstatus" style={{color: `${color}`}}> &nbsp;&nbsp;&nbsp; {status.charAt(0).toUpperCase()+ status.slice(1)}</span>

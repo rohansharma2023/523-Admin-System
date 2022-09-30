@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Card from './components/Card';
 import M from 'materialize-css';
-
+import Proposal from './components/Proposal'
 const axios = require('axios').default;
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
     return (
         <div className="App">
             <Navbar/>
-            <div className="container">
+            {/* <div className="container">
 
-            <h3>Proposal List</h3>
+            
             {proposalList.map((val, key)=>{
                 return (
                     <div key = {key}>
@@ -36,7 +36,8 @@ function App() {
                     </div>
                 );
             })}
-            </div>
+            </div> */}
+            <Proposal/>
         </div>
     );
 }
