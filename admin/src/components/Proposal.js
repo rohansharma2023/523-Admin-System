@@ -3,22 +3,19 @@ import '../styles/Proposal.css'
 import M from 'materialize-css';
 import { BiCheck } from 'react-icons/bi';
 import { BiGhost } from 'react-icons/bi';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { MdWork } from 'react-icons/md';
+import { BsFillTelephoneFill } from 'react-icons/bs';
+
 import { useParams } from "react-router-dom";
 const axios = require('axios').default;
 
 function Proposal(props) {
     let params = useParams();
     const [record, setRecord] = useState(null);
-    // const [record, setRecord] = useState(() =>{
-    //     for (let i = 0; i<props.proposalList.length; i++){
-    //         if (props.proposalList[i]._id === id.id){
-    //             return( props.proposalList[i])
-    //         }
-    //     }
-    //     return null
-    // });
-    //console.log(props.proposalList)
-    
+    const [color, setColor ] = useState("")
+
 
 
     
@@ -33,31 +30,25 @@ function Proposal(props) {
 
     const[cssLimbo, setcssLimbo] = useState('disappearLimbo')
 
-    let color = props.status == 'limbo' ? '#e57373' : props.status =='accepted'? '#43a047' : props.status == 'open' ? '#00897b' : props.status == 'denied' ? '#d32f2f' : null
     
-    useEffect(()=>{
-        // console.log(id.id);
-        // console.log(props.proposalList);
-        // // Search for da record in da database that matches da id
-        // for (let i = 0; i<props.proposalList.length; i++){
-        //     if (props.proposalList[i]._id === id.id){
-        //         setRecord( props.proposalList[i])
-        //     }
-        // }
-        // console.log(record)
-        
-        
+    useEffect(()=>{  
         axios.get(`http://localhost:3001/fetchById/${params.id}`).then((res)=>{
-            console.log(res);
-            //setProposalList(res.data);
-        });
+            console.log(res.data[0]);
+        setRecord(res.data[0])
+           console.log(res.data[0].status)
+            setColor(res.data[0].status == 'limbo' ? '#e57373' : res.data[0].status =='accepted'? '#43a047' : res.data[0].status == 'open' ? '#00897b' : res.data[0].status == 'denied' ? '#d32f2f' : null)
+                   })
+   
     }, []);
     
+
     return (
         
         !record ? <div>Error</div> : 
-        <>
-        <p className="title">{record.title}</p>
+        <div className="container">
+            
+            <div className="information">
+        {/* <p className="title">{record.title}</p>
             <p className="email">From: {record.email} </p>
 
             <div className="description">{record.description}
@@ -65,11 +56,25 @@ function Proposal(props) {
             </div>
             <div className="dateandstatus">
             Date Posted: {record.date}    <span className="newstatus" style={{color: `${color}`}}> &nbsp;&nbsp;&nbsp; {record.status.charAt(0).toUpperCase()+ record.status.slice(1)}</span>
+            </div> */}
+            <h3 className="proposalTitle">{record.title}</h3>
+            <h5 className="proposalDate" style={{fontSize:'18px',marginBottom:'20px',marginTop:'25px',fontWeight:'bold', color:'#616161'}}>Date Posted: {record.date}</h5>
+            <h5 className="proposalStatus" style={{marginBottom:'20px',marginTop:'25px',fontWeight:'bold',color:'#616161'}}><span>Status: </span><span style={{color:`${color}`}}> {record.status.charAt(0).toUpperCase()+ record.status.slice(1)} </span></h5>
+
+            <div className="proposalInfo"><BsFillPersonFill className="proposalIcon"/><span>{record.name}</span></div>
+            <div className="proposalInfo"><MdEmail className="proposalIcon"/><span>{record.email}</span></div>
+            <div className="proposalInfo"><MdWork className="proposalIcon"/><span style={{width:'100%'}}>{record.institution}</span></div>
+            <div className="proposalInfo"><BsFillTelephoneFill className="proposalIcon"/><span>{record.phone_number}</span></div>
+
             </div>
+            <div className="proposalDescription"><span>{record.description} 
+            </span></div>
+
+
         <div className="buttons">
             <div style={{display:"inline-block"}}>
                 <div className={`${cssApprove}`}>
-                <div className="buttonText"><p style={{fontWeight:'300', position:'relative',top:'2px'}}>Accept</p></div>
+                <div className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Accept</p></div>
                 <div id="triangle-down"></div>
                 </div>
         <div  className={`options  waves-effect waves-green`} onMouseOver={() => setCssApprove('showApprove')} onMouseLeave = {()=>setCssApprove('disappearApprove') } >
@@ -79,7 +84,7 @@ function Proposal(props) {
         <div style={{display:"inline-block"}}>
         <div className={`${cssDeny}`}>
 
-            <div className="buttonText"><p style={{fontWeight:'300', position:'relative',top:'2px'}}>Deny</p></div>
+            <div className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Deny</p></div>
             <div id="triangle-down"></div>
 </div>
         <div className={`options  waves-effect waves-red`} onMouseOver={() => setcssDeny('showDeny')} onMouseLeave = {()=>setcssDeny('disappearDeny')} >
@@ -89,7 +94,7 @@ function Proposal(props) {
     <div style={{display:"inline-block"}}>
     <div className={`${cssLimbo}`}>
 
-        <div className="buttonText"><p style={{fontWeight:'300', position:'relative',top:'2px'}}>Limbo</p></div>
+        <div className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Limbo</p></div>
         <div id="triangle-down"></div>
         </div>
 
@@ -100,7 +105,7 @@ function Proposal(props) {
 </div>
 </div>
 
-</>
+</div>
 
     //     // <div className={`${css} waves-effect waves-teal`} onMouseEnter = {() => setCss("proposalCardHover")} onMouseLeave = {() => setCss("proposalCard")}>
     //     //     <p className="title">{props.title}</p>

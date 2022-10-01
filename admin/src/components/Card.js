@@ -13,7 +13,7 @@ function Card(props) {
             <p className="title">{props.value.title}</p>
             <p className="email">From: {props.value.email} </p>
 
-            <div className="description">{props.value.description}
+            <div className="description">{props.value.description} 
             
             </div>
             <div className="dateandstatus">

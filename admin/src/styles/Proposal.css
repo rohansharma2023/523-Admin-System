@@ -2,8 +2,8 @@
 .options{
     box-shadow:1px 3px 10px 1px #bab6b6;
     border-radius: 50%;
-    width: 50px;
-    height:50px;
+    width: 60px;
+    height:60px;
     background-color: #fdfcfc ;
     border-color: #fdfcfc;
     display: inline-block;
@@ -45,10 +45,16 @@ margin-top:7px
     border-right: 15px solid transparent;
     border-top: 15px solid #f5f5f5;
     position: relative;
-    left:30px
+    left:35px
     
   }
-
+.proposalDescription{
+    margin-top:20px;
+    text-align: left;
+    font-size: 30px;
+  letter-spacing: -1px;
+  margin-bottom: 130px;
+}
 .buttonText{
     background-color: #f5f5f5;
     margin-bottom: -7px;
@@ -57,28 +63,72 @@ margin-top:7px
 }
 .buttons{
     position:sticky;
-    top:100px
+    bottom:60px
 }
 .ghost{
-    font-size: 18px;
+    font-size: 22px;
     position: absolute;
-    top:15px;
-    left:16px;
+    top:17px;
+    left:19.5px;
     color:#e57373;
 }
 .check{
-    font-size: 23px;
+    font-size: 25px;
         position: absolute;
-        top:13.5px;
-        left:13.5px;
+        top:16.5px;
+        left:18px;
         color:#43a047;
 
 }
 .close{
-    font-size: 23px;
+    font-size: 25px;
         position: absolute;
-        top:13.5px;
-        left:13.5px;
+        top:16.5px;
+        left:18px;
         color:#d32f2f
 
 }
+.information{
+    text-align: left;
+    margin-top: 50px;
+}
+.proposalTitle{
+    font-weight: bold;
+}
+.proposalInfo{
+    display: inline-block;
+    width: 50%;
+    font-size: 20px;
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: nowrap;
+    padding:5px
+}
+
+.proposalInfo span{
+    position: relative;
+    left:10px;
+    bottom:12px;
+    color:rgb(61, 61, 61);
+    font-size:18px;
+   }
+.proposalIcon{
+    font-size: 35px;
+}
+@media (max-width: 550px){
+    .proposalInfo{
+    width: 100%;
+    }
+    .proposalIcon{
+        font-size: 25px;
+    }
+    .proposalInfo span{
+        position: relative;
+        left:10px;
+        bottom:7px;
+        color:rgb(61, 61, 61);
+        font-size:18px;
+       }
+    
+}
+

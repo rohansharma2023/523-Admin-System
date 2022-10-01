@@ -25,7 +25,7 @@ function App() {
 
             <Routes>
         <Route path="/" element={<ProposalList proposalList = {proposalList}/>} />
-        <Route path="proposal/:id" element={<Proposal proposalList = {proposalList}/>} />
+        <Route path="proposal/:id" element={<Proposal />} />
         
 
       </Routes>
