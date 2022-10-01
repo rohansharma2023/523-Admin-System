@@ -7,7 +7,7 @@
     bottom:17px;
     display: inline-block;
     width: 100%;
-    left:20px;
+    left:-10px;
     margin-top: 60px;
     }
 .divider{
@@ -22,13 +22,27 @@
 }
 .titleContainer i{
     position: relative;
-    top:10px
+    top:10px;
+    display: flex;
+    flex-direction: row;
 }
 .dropDown{
     position: relative;
-    bottom: 18px;
-    left:59px;
+    bottom: 16px;
+    left:-10px;
     z-index: 1000;
+    width:100px
+
+}
+#filterIcon{
+    position: relative;
+    top:10px;
+    left:10px;
+    text-align: center;
+}
+#EmailIcon{
+    position: relative;
+    top:10px;
 
 }
 #triangle-up {
@@ -104,7 +118,9 @@
     /* box-shadow:  2px 5px 100px #bab6b6; */
 
   }
-  
+  #emailButton{
+    
+  }
   #rectangleUp {
     cursor:pointer;
     width: 100px;
@@ -166,6 +182,46 @@
     position: relative;
     top:12px
   }
-  
-    
+
+  .titleContainer{
+    display:flex;
+    flex-direction: row;
+  }
+  /* #filterIcon{
+    position: relative;
+    top:52px;
+    left:10px
+  } */
+
+  #filterIconContainer{
+    min-width: 50px;
+    max-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    top:40px;
+    left:20px;
+  }
+  .hover{
+    background-color: #d8d8d8;
+
+  }
+
+  .hidden{
+    z-index: -10000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.1s ease-in-out;
+  }
+  .shown{
+    z-index: 10000;
+    visibility: visible;
+    opacity: 100;
+    transition: 0.1s ease-in-out;
+
+  }
+  /* .hover{
+
+  } */
+
     

@@ -15,6 +15,7 @@ function Proposal(props) {
     let params = useParams();
     const [record, setRecord] = useState(null);
     const [color, setColor ] = useState("")
+    const [status, setStatus] = useState(null)
 
 
 
@@ -33,9 +34,8 @@ function Proposal(props) {
     
     useEffect(()=>{  
         axios.get(`http://localhost:3001/fetchById/${params.id}`).then((res)=>{
-            console.log(res.data[0]);
         setRecord(res.data[0])
-           console.log(res.data[0].status)
+           setStatus(res.data[0].status)
             setColor(res.data[0].status == 'limbo' ? '#e57373' : res.data[0].status =='accepted'? '#43a047' : res.data[0].status == 'open' ? '#00897b' : res.data[0].status == 'denied' ? '#d32f2f' : null)
                    })
    
@@ -43,8 +43,8 @@ function Proposal(props) {
     
 
     return (
-        
-        !record ? <div>Error</div> : 
+        params.id === '0'?<div>Error</div>:
+        !record ? <div>Loading...</div> : 
         <div className="container">
             
             <div className="information">
@@ -74,32 +74,35 @@ function Proposal(props) {
         <div className="buttons">
             <div style={{display:"inline-block"}}>
                 <div className={`${cssApprove}`}>
-                <div className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Accept</p></div>
-                <div id="triangle-down"></div>
+                <div  style={{visibility: status === 'accepted'? "hidden" : null}} className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Accept</p></div>
+                <div  style={{visibility: status === 'accepted'? "hidden" : null}} id="triangle-down"></div>
                 </div>
-        <div  className={`options  waves-effect waves-green`} onMouseOver={() => setCssApprove('showApprove')} onMouseLeave = {()=>setCssApprove('disappearApprove') } >
-        <i className=" material-icons check">check </i>
+        <div  style = {{cursor:status === 'accepted'? "not-allowed" : ''}}  className={`options waves-effect ${ status !== 'accepted'? 'waves-red' : ''}`} onMouseOver={() => setCssApprove('showApprove')} onMouseLeave = {()=>setCssApprove('disappearApprove') } >
+        <i className=" material-icons check"  style = {{color:status === "accepted" ? '#bdbdbd':'#43a047'}}
+>check </i>
         </div>
         </div>
         <div style={{display:"inline-block"}}>
         <div className={`${cssDeny}`}>
-
-            <div className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Deny</p></div>
-            <div id="triangle-down"></div>
+            
+            <div className="buttonText" style={{visibility: status === 'denied'? "hidden" : null}}><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Deny</p></div>
+            <div style={{visibility: status === 'denied'? "hidden" : null}} id="triangle-down"></div>
 </div>
-        <div className={`options  waves-effect waves-red`} onMouseOver={() => setcssDeny('showDeny')} onMouseLeave = {()=>setcssDeny('disappearDeny')} >
-        <i className="material-icons close">close </i>
+        <div  style = {{cursor:status === 'denied'? "not-allowed" : ''}} className={`options waves-effect ${ status !== 'denied'? 'waves-red' : ''}`} onMouseOver={() => setcssDeny('showDeny')} onMouseLeave = {()=>setcssDeny('disappearDeny')} >
+        <i className="material-icons close"      style = {{ color:status === "denied" ? '#bdbdbd':'#d32f2f'}}  
+>close </i>
         </div>
     </div>
     <div style={{display:"inline-block"}}>
     <div className={`${cssLimbo}`}>
 
-        <div className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Limbo</p></div>
-        <div id="triangle-down"></div>
+        <div  style={{visibility: status === 'limbo'? "hidden" : null}} className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Limbo</p></div>
+        <div  style={{visibility: status === 'limbo'? "hidden" : null}} id="triangle-down"></div>
         </div>
 
-    <div className={`options  waves-effect waves-red`}onMouseOver={() => setcssLimbo('showLimbo')} onMouseLeave = {()=>setcssLimbo('disappearLimbo')}  >
-    <BiGhost className="ghost"/>
+    <div style = {{cursor:status === 'limbo'? "not-allowed" : ''}} className={`options waves-effect ${ status !== 'limbo'? 'waves-red' : ''}`}onMouseOver={() => setcssLimbo('showLimbo')} onMouseLeave = {()=>setcssLimbo('disappearLimbo')}  >
+    <BiGhost className="ghost"  style = {{     color:status === "limbo" ? '#bdbdbd':'#e57373'
+}}/>
     </div>
     
 </div>

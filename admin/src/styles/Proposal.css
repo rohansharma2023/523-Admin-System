@@ -70,14 +70,12 @@ margin-top:7px
     position: absolute;
     top:17px;
     left:19.5px;
-    color:#e57373;
 }
 .check{
     font-size: 25px;
         position: absolute;
         top:16.5px;
         left:18px;
-        color:#43a047;
 
 }
 .close{
@@ -85,7 +83,6 @@ margin-top:7px
         position: absolute;
         top:16.5px;
         left:18px;
-        color:#d32f2f
 
 }
 .information{

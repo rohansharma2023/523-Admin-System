@@ -38,6 +38,8 @@ app.get("/read", async(req, res) => {
     }) 
 });
 
+// may have error
+// handle if id is empty or wrong id
 app.get("/fetchById/:id", async(req, res) => {
     const id = req.params.id;
     
