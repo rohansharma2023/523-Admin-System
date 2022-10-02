@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express(); 
 
-const foodModel = require("./models/Food");
 const proposalModel = require("./models/Proposal");
 
 app.use(express.json());

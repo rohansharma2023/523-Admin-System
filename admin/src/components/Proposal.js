@@ -45,7 +45,6 @@ function Proposal(props) {
     
     useEffect(()=>{
         axios.get(`http://localhost:3001/fetchById/${params.id}`).then((res)=>{
-            console.log(res)
             if (res.data !== 'Proposal Does not Exist.'){
             setRecord(res.data[0])
             setStatus(res.data[0].status)
