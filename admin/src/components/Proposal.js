@@ -86,7 +86,7 @@ function Proposal(props) {
                 <div  style={{visibility: status === 'accepted'? "hidden" : null}} className="buttonText"><p style={{fontWeight:'500', position:'relative',top:'2px'}}>Accept</p></div>
                 <div  style={{visibility: status === 'accepted'? "hidden" : null}} id="triangle-down"></div>
                 </div>
-        <div  style = {{cursor:status === 'accepted'? "not-allowed" : ''}} onClick={()=>{updateStatus("accepted")}}  className={`options waves-effect ${ status !== 'accepted'? 'waves-red' : ''}`} onMouseOver={() => setCssApprove('showApprove')} onMouseLeave = {()=>setCssApprove('disappearApprove') } >
+        <div  style = {{cursor:status === 'accepted'? "not-allowed" : ''}} onClick={()=>{updateStatus("accepted")}}  className={`options waves-effect ${ status !== 'accepted'? 'waves-green' : ''}`} onMouseOver={() => setCssApprove('showApprove')} onMouseLeave = {()=>setCssApprove('disappearApprove') } >
         <i className=" material-icons check"  style = {{color:status === "accepted" ? '#bdbdbd':'#43a047'}}
 >check 
         </i>
