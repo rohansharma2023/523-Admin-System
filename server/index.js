@@ -29,27 +29,33 @@ app.post("/insert", async(req, res) => {
 });
 
 app.get("/read", async(req, res) => {
-    proposalModel.find({}, (err, result)=>{
-        if (err) {
-            res.send(err);
-        }
-        
-        res.send(result);
-    }) 
+    try {
+        proposalModel.find({}, (err, result)=>{
+            if (err) {
+                res.send(err);
+            }
+            
+            res.send(result);
+        }) 
+    } catch(err) {
+        console.log(err);
+    }
 });
 
-// may have error
-// handle if id is empty or wrong id
+
 app.get("/fetchById/:id", async(req, res) => {
-    const id = req.params.id;
-    
-    proposalModel.find({_id: mongoose.Types.ObjectId(id)}, (err, result)=>{
-        if (err) {
-            res.send(err);
-        }
-        
-        res.send(result);
-    })
+    try {
+        const id = req.params.id;
+        proposalModel.find({_id: mongoose.Types.ObjectId(id)}, (err, result)=>{
+            if (err) {
+                res.send(err);
+            }
+            
+            res.send(result);
+        })
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 app.put("/update", async(req, res) => {
@@ -68,9 +74,13 @@ app.put("/update", async(req, res) => {
 });
 
 app.delete("/delete/:id", async(req, res)=>{
-    const id = req.params.id;
-    await foodModel.findByIdAndRemove(id).exec();
-    res.send("deleted");
+    try {
+        const id = req.params.id;
+        await foodModel.findByIdAndRemove(id).exec();
+        res.send("deleted");
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 

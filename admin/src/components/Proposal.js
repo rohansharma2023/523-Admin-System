@@ -17,28 +17,17 @@ function Proposal(props) {
     const [color, setColor ] = useState("")
     const [status, setStatus] = useState(null)
 
-
-
-    
-    // const[css, setCss] = useState('proposalCard')
-    let approveBut;
-    let denyBut;
-    let limboBut;
-    //const { testvalue } = useParams();
-
     const[cssApprove, setCssApprove] = useState('disappearApprove')
     const[cssDeny, setcssDeny] = useState('disappearDeny')
-
     const[cssLimbo, setcssLimbo] = useState('disappearLimbo')
 
     
-    useEffect(()=>{  
+    useEffect(()=>{
         axios.get(`http://localhost:3001/fetchById/${params.id}`).then((res)=>{
-        setRecord(res.data[0])
-           setStatus(res.data[0].status)
+            setRecord(res.data[0])
+            setStatus(res.data[0].status)
             setColor(res.data[0].status == 'limbo' ? '#e57373' : res.data[0].status =='accepted'? '#43a047' : res.data[0].status == 'open' ? '#00897b' : res.data[0].status == 'denied' ? '#d32f2f' : null)
-                   })
-   
+        })
     }, []);
     
 
