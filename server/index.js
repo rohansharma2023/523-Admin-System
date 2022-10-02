@@ -15,19 +15,22 @@ mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongod
     useNewUrlParser: true,
 });
 
-app.post("/insert", async(req, res) => {
-    const foodName = req.body.foodName;
-    const days = req.body.days
-    const food = new foodModel({foodName: foodName, daysSinceIAte: days});
+// redo for client interface
 
-    try {
-        await food.save();
-        res.send("inserted data");
-    } catch(err) {
-        console.log(err);
-    }
-});
+// app.post("/insert", async(req, res) => {
+//     const foodName = req.body.foodName;
+//     const days = req.body.days
+//     const food = new foodModel({foodName: foodName, daysSinceIAte: days});
 
+//     try {
+//         await food.save();
+//         res.send("inserted data");
+//     } catch(err) {
+//         console.log(err);
+//     }
+// });
+
+// grab all data from database
 app.get("/read", async(req, res) => {
     try {
         proposalModel.find({}, (err, result)=>{
@@ -42,7 +45,7 @@ app.get("/read", async(req, res) => {
     }
 });
 
-
+// grab one proposal data by id
 app.get("/fetchById/:id", async(req, res) => {
     try {
         const id = req.params.id;
@@ -58,14 +61,14 @@ app.get("/fetchById/:id", async(req, res) => {
     }
 });
 
+// update status of proposal
 app.put("/update", async(req, res) => {
-    const newFoodName = req.body.newFoodName;
-    const id = req.body.id;
-    
     try {
-        await foodModel.findById(id, (err, updatedFood)=>{
-            updatedFood.foodName = newFoodName;
-            updatedFood.save();
+        const newStatus = req.body.newStatus;
+        const id = req.body.id;
+        await proposalModel.findById(id, (err, updatedStatus)=>{
+            updatedStatus.status = newStatus;
+            updatedStatus.save();
             res.send("update");
         });
     } catch(err) {
@@ -73,15 +76,15 @@ app.put("/update", async(req, res) => {
     }
 });
 
-app.delete("/delete/:id", async(req, res)=>{
-    try {
-        const id = req.params.id;
-        await foodModel.findByIdAndRemove(id).exec();
-        res.send("deleted");
-    } catch(err) {
-        console.log(err);
-    }
-});
+// app.delete("/delete/:id", async(req, res)=>{
+//     try {
+//         const id = req.params.id;
+//         await foodModel.findByIdAndRemove(id).exec();
+//         res.send("deleted");
+//     } catch(err) {
+//         console.log(err);
+//     }
+// });
 
 
 

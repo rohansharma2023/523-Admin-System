@@ -3,39 +3,39 @@ const mongoose = require('mongoose');
 const ProposalSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     description: {
         type: String,
-        required: true,
+        required: false,
     },
     email: {
         type: String,
-        required: true,
+        required: false,
     },
     date: {
         type: String,
-        required: true,
+        required: false,
     },
     status: {
         type: String,
-        required: true,
+        required: false,
     },
     institution: {
         type: String,
-        required: true,
+        required: false,
     },
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     phone_number: {
         type: String,
-        required: true,
+        required: false,
     },
     file: {
         type: String,
-        required: true,
+        required: false,
     },
 });
 
