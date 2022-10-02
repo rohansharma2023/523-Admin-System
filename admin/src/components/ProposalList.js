@@ -2,24 +2,34 @@ import React, { useState, useEffect } from "react";
 import M from 'materialize-css';
 import Card from './Card.js'
 import '../styles/ProposalList.css'
+const axios = require('axios').default;
 
 function ProposalList(props) {
-const [filter, setFilter] = useState('All')
-const [css1, setCss1] = useState('flat1')
-const [css2, setCss2] = useState('flat2')
-const [css3, setCss3] = useState('flat3')
-const [css4, setCss4] = useState('flat4')
-const [css5, setCss5] = useState('flat5')
-const [cssIcon1, setCssIcon1] = useState('away')
-const [cssIcon2, setCssIcon2] = useState('away')
+    const [filter, setFilter] = useState('All')
+    const [css1, setCss1] = useState('flat1')
+    const [css2, setCss2] = useState('flat2')
+    const [css3, setCss3] = useState('flat3')
+    const [css4, setCss4] = useState('flat4')
+    const [css5, setCss5] = useState('flat5')
+    const [cssIcon1, setCssIcon1] = useState('away')
+    const [cssIcon2, setCssIcon2] = useState('away')
 
-const [cssDropDown, setCssDropDown] = useState('hidden')
+    const [cssDropDown, setCssDropDown] = useState('hidden')
+    const [proposalList, setProposalList] = useState([]);
 
-let address = []
-        for (let i = 0; i<props.proposalList.length;i++){
-    if (props.proposalList[i].status === filter.toLowerCase()){
-        address.push(props.proposalList[i].email)
-    }}
+    let address = []
+    for (let i = 0; i<proposalList.length;i++) {
+        if (proposalList[i].status === filter.toLowerCase()){
+            address.push(proposalList[i].email);
+        }
+    }
+
+    useEffect(()=>{
+        axios.get("http://localhost:3001/read").then((res)=>{
+            // console.log(res);
+            setProposalList(res.data);
+        });
+    }, []);
 
 return(
     <div onClick = {() => cssDropDown === 'shown'?setCssDropDown('hidden') : null}>
@@ -50,7 +60,7 @@ return(
 
             
             { 
-            props.proposalList.map((val, key)=>{
+            proposalList.map((val, key)=>{
                 if (filter === 'All' || val.status === filter.toLowerCase() ){
                 return (
                     <div key = {key}>
