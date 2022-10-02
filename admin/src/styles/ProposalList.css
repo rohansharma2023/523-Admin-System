@@ -55,6 +55,8 @@ white-space: nowrap;
     margin-left: auto;
     vertical-align: middle;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
 #triangle-up {
     position: relative;
