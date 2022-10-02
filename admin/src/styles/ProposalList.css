@@ -7,8 +7,12 @@
     bottom:17px;
     display: inline-block;
     width: 100%;
-    left:-10px;
+    left:-20px;
     margin-top: 60px;
+    text-overflow: ellipsis;
+
+overflow: hidden;
+white-space: nowrap;
     }
 .divider{
     position: relative;
@@ -29,22 +33,29 @@
 .dropDown{
     position: relative;
     bottom: 16px;
-    left:-10px;
+    left:-26px;
     z-index: 1000;
-    width:100px
-
+    width:100px;
+    top:88px;
 }
 #filterIcon{
+    position: absolute;
+    left: 9.5px;
+    top:10.5px
+}
+    
+#emailIconContainer{
+    min-width: 50px;
+    max-width: 50px;
+    height: 50px;
+    border-radius: 50%;
     position: relative;
-    top:10px;
+    top:40px;
     left:10px;
+    margin-left: auto;
+    vertical-align: middle;
     text-align: center;
-}
-#EmailIcon{
-    position: relative;
-    top:10px;
-
-}
+  }
 #triangle-up {
     position: relative;
     left:40px;
@@ -118,9 +129,7 @@
     /* box-shadow:  2px 5px 100px #bab6b6; */
 
   }
-  #emailButton{
-    
-  }
+ 
   #rectangleUp {
     cursor:pointer;
     width: 100px;
@@ -187,21 +196,18 @@
     display:flex;
     flex-direction: row;
   }
-  /* #filterIcon{
-    position: relative;
-    top:52px;
-    left:10px
-  } */
-
+  
   #filterIconContainer{
     min-width: 50px;
     max-width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: relative;
-    top:40px;
-    left:20px;
+    position: absolute;
+    top:86px;
+    vertical-align: middle;
+    text-align: center;
   }
+  
   .hover{
     background-color: #d8d8d8;
 

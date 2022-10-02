@@ -15,6 +15,11 @@ const [cssIcon2, setCssIcon2] = useState('away')
 
 const [cssDropDown, setCssDropDown] = useState('hidden')
 
+let address = []
+        for (let i = 0; i<props.proposalList.length;i++){
+    if (props.proposalList[i].status === filter.toLowerCase()){
+        address.push(props.proposalList[i].email)
+    }}
 
 return(
     <div onClick = {() => cssDropDown === 'shown'?setCssDropDown('hidden') : null}>
@@ -35,7 +40,7 @@ return(
 
 
 <p className="bigTitle " > {filter } Proposals</p>
-<div style={{visibility: filter === 'All'? 'visible':'visible',marginLeft: 'auto'}} onMouseEnter={()=>setCssIcon2('hover')} onMouseLeave={()=>setCssIcon2('away')} onClick = {()=>cssDropDown === 'hidden'?setCssDropDown('shown') : setCssDropDown('hidden')} id="filterIconContainer"  className={`${cssIcon2} waves-effect`}><i id="EmailIcon" className="small material-icons">email</i></div>
+<div onClick={() =>console.log(address)} style={{visibility: filter === 'All'? 'hidden':'visible'}} onMouseEnter={()=>setCssIcon2('hover')} onMouseLeave={()=>setCssIcon2('away')} id="emailIconContainer"  className={`${cssIcon2} waves-effect`}><i id="EmailIcon" className="small material-icons">email</i></div>
 
 </div>
         
@@ -44,7 +49,8 @@ return(
     <div className="divider"></div>
 
             
-            {props.proposalList.map((val, key)=>{
+            { 
+            props.proposalList.map((val, key)=>{
                 if (filter === 'All' || val.status === filter.toLowerCase() ){
                 return (
                     <div key = {key}>
@@ -59,6 +65,7 @@ return(
                         />
                     </div>
                 );}
+                
             })}
             </div>
             </div>

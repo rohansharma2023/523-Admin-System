@@ -38,7 +38,11 @@
 float:left;
 position: absolute;
 top:-35px;
-color:black
+color:black;
+text-overflow: ellipsis;
+
+overflow: hidden;
+white-space: nowrap;
 
 }
 .description{
