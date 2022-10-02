@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Card from './components/Card';
 import M from 'materialize-css';
 import Proposal from './components/Proposal'
+import Error from "./components/Error";
 import Login from './components/Login'
 import ProposalList from './components/ProposalList'
 import { Routes, Route, Link } from "react-router-dom";
@@ -26,7 +27,8 @@ function App() {
 
         <Route path="/" element={<ProposalList/>} />
         <Route path="proposal/:id" element={<Proposal />} />
-        <Route path="proposal" element={<Proposal />} />
+        <Route path="proposal" element={<Error message = {"Please Provide the ID of the Desired Proposal."}/>} />
+        <Route path="*" element={<Error message = {"This Page Does Not Exist."}/>} />
 
 
 
