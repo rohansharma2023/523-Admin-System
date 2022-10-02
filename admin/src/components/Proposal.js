@@ -7,6 +7,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { MdWork } from 'react-icons/md';
 import { BsFillTelephoneFill } from 'react-icons/bs';
+import Error  from "./Error";
 
 import { useParams } from "react-router-dom";
 const axios = require('axios').default;
@@ -44,16 +45,21 @@ function Proposal(props) {
     
     useEffect(()=>{
         axios.get(`http://localhost:3001/fetchById/${params.id}`).then((res)=>{
+            console.log(res)
+            if (res.data !== 'Proposal Does not Exist.'){
             setRecord(res.data[0])
             setStatus(res.data[0].status)
-            setColor(res.data[0].status == 'limbo' ? '#e57373' : res.data[0].status =='accepted'? '#43a047' : res.data[0].status == 'open' ? '#00897b' : res.data[0].status == 'denied' ? '#d32f2f' : null)
+            setColor(res.data[0].status == 'limbo' ? '#e57373' : res.data[0].status =='accepted'? '#43a047' : res.data[0].status == 'open' ? '#00897b' : res.data[0].status == 'denied' ? '#d32f2f' : null)}
+            else{
+                setRecord("error")
+            }
         })
     }, []);
     
 
     return (
-        params.id === '0'?<div>Error</div>:
         !record ? <div>Loading...</div> : 
+        record === 'error' ? <Error message = 'Proposal Does not Exist.'/> : 
         <div className="container">
             
             <div className="information">

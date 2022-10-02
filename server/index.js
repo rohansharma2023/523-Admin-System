@@ -57,7 +57,7 @@ app.get("/fetchById/:id", async(req, res) => {
             res.send(result);
         })
     } catch(err) {
-        console.log(err);
+        res.send("Proposal Does not Exist.");
     }
 });
 
