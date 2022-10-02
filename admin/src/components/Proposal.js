@@ -57,7 +57,7 @@ function Proposal(props) {
     
 
     return (
-        !record ? <div>Loading...</div> : 
+        !record ? <div style={{fontWeight:'bold'}}>Loading...</div> : 
         record === 'error' ? <Error message = 'Proposal Does not Exist.'/> : 
         <div className="container">
             

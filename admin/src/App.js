@@ -15,10 +15,7 @@ function App() {
 
     
     
-        if(!loggedIn){
-            return <Login/>
-        }
-        else{
+        
             return(
         <div className="App">
 
@@ -29,6 +26,8 @@ function App() {
         <Route path="proposal/:id" element={<Proposal />} />
         <Route path="proposal" element={<Error message = {"Please Provide the ID of the Desired Proposal."}/>} />
         <Route path="*" element={<Error message = {"This Page Does Not Exist."}/>} />
+        <Route path="/login" element={<Login/>} />
+
 
 
 
@@ -39,5 +38,5 @@ function App() {
         </div>
     );
 }
-}
+
 export default App;
