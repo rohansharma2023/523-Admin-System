@@ -16,18 +16,25 @@ mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongod
 
 // redo for client interface
 
-// app.post("/insert", async(req, res) => {
-//     const foodName = req.body.foodName;
-//     const days = req.body.days
-//     const food = new foodModel({foodName: foodName, daysSinceIAte: days});
+    app.post("/insert", async(req, res) => {
+       const title = req.body.title;
+       const description = req.body.description;
+       const email = req.body.email;
+       const date = req.body.date;
+       const status = req.body.status;
+       const institution = req.body.institution;
+       const name = req.body.name;
+       const phone_number = req.body.phone_number;
+       const file = req.body.file;
+       const proposal = new proposalModel({title: title, description: description, email: email, date: date, status: status, institution: institution, name: name, phone_number: phone_number, file: file});
 
-//     try {
-//         await food.save();
-//         res.send("inserted data");
-//     } catch(err) {
-//         console.log(err);
-//     }
-// });
+       try {
+           await proposal.save();
+           res.send("inserted data");
+       } catch(err) {
+           console.log(err);
+       }
+   });
 
 // grab all data from database
 app.get("/read", async(req, res) => {

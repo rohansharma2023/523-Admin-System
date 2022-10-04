@@ -49,7 +49,6 @@ function App() {
     return (
         <div className="App">
             <h1>Client Proposal</h1>
-
             <label>Title</label>
             <input type="text" onChange={(event)=>{
                 setTitleName(event.target.value);
