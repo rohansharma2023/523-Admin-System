@@ -1,11 +1,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
+//--------------------------------------------
+//const path = require('path');
+//const crypto = require('crypto');
+//const multer = require('multer');
+//const GridFsStorage = require('multer-gridfs-storage');
+//const Grid = require('gridfs-stream');
+//const methodOverride = require('method-override');
+//const bodyParser = require('body-parser');
+//--------------------------------------------
 const app = express(); 
 
 const proposalModel = require("./models/Proposal");
 
 app.use(express.json());
+
+//Middleware-------------------------------------
+//app.use(bodyParser.json());
+//app.use(methodOverride('_method'));
+//--------------------------------------------
 app.use(cors());
 
 const dbname = "proposal"

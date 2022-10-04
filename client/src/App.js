@@ -78,9 +78,19 @@ function App() {
                 setPhoneNumber(event.target.value);
             }}></input>
             <label>Feel Free to add any files you deem important</label>
-            <input type="text" onChange={(event)=>{
+            <form action= "/upload" method="POST" 
+            enctype="multipart/form-data">
+                <div class="custom-file mb-3">
+                    <input type="file" name="file" id="file" class="custom-file-input" onChange={(event)=>{
+                        setFile(event.target.value);
+                    }}></input>
+                    <label for="file" class="custom-file-label">Choose File</label>
+                </div>
+                {/*<input type="submit" value="submit" class="btn btn-primary btn-block"></input>*/}   
+            </form>
+            {/*<input type="text" onChange={(event)=>{
                 setFile(event.target.value);
-            }}></input>
+            }}></input>*/} 
             <button onClick={() =>{addToList()}}>Submit</button> 
         </div>
     );
