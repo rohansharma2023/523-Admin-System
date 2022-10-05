@@ -6,13 +6,46 @@
   align-items: center;
 }
 
-input, button {
-    width: 200px;
+button {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    margin: 15px;
+}
+
+.App input {
+    width: 950px;
     height: 30px;
     font-size: 20px;
     margin: 5px;
 }
 
+.App textarea{
+  width: 950px;
+  height: 100px;
+  font-size: 15px;
+  margin: 5px;
+}
 table, th, td {
     border:1px solid black;
   }
+
+  p{
+    margin-left: 150px;
+    margin-right: 150px; 
+  
+  }
+
+.App label{
+    text-align: left;
+    display: block;
+}
+
+.App fieldset{
+  width: 1000px;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
