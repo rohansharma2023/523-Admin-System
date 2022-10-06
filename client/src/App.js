@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { createBrowserHistory } from 'history';
 import './App.css';
-import { useNavigate} from "react-router-dom";
-
+import {Router, Route, Link} from "react-router-dom";
+import './SubmissionCmpl.js';
 
 const axios = require('axios').default;
 
@@ -17,8 +18,8 @@ function App() {
     const [file, setFile] = useState("");
 
     //Thank you for submitting page redirect 
-    const navigate = useNavigate();
-    
+
+
 
     const addToList = () => {
         axios.post("http://localhost:3001/insert", {
@@ -31,7 +32,8 @@ function App() {
             name: name, 
             phone_number: phone_number, 
             file: file, 
-        });
+        })
+        
     };
 
     /* const updateFood = (id) => {
@@ -65,15 +67,19 @@ function App() {
             Or better said, we cannot have the student teams be required to sign non-disclosure agreements and enter into legal contracts<br></br>
             2) We cannot have projects where clients risk damage if the team does not produce working code.  While we almost always produce something that works, our teams cannot be put under the pressure to produce "or else someone gets harmed".<br></br>
             3)  We want clients that do not need to micro-manage the project.  While we love having clients that have the time and interest in interactions with the team, we also need the team to be making design and scheduling decisions... this is how the students learn.  The teams also have very packed time tables, as they have other classes and activities to manage in addition to this project.  So we welcome client interactions through out the semester, but we also cannot put heavy time constraints on the team (such as weekly or twice-weekly meetings that they cannot afford)<br></br>
-            
-4) A client must be able to give the team a few hours at the beginning of the course to develop the requirements for the project.  These hours will happen in an initial meeting or two in the first week or two.  This interaction of the team with the client is a critical component of the students' experience.  After the initial meetings, team-client meetings will be as wanted by the team and client.  Usually a team will want to schedule 2, maybe 3 more meetings during the semester as a checkup to see if what they are building is more-or-less on track with what the client is imagining.<br></br>
-
+            4) A client must be able to give the team a few hours at the beginning of the course to develop the requirements for the project.  These hours will happen in an initial meeting or two in the first week or two.  This interaction of the team with the client is a critical component of the students' experience.  After the initial meetings, team-client meetings will be as wanted by the team and client.  Usually a team will want to schedule 2, maybe 3 more meetings during the semester as a checkup to see if what they are building is more-or-less on track with what the client is imagining.<br></br>
             </p>
             <form>
             <fieldset>
             <label>Title: </label>
             <input type="text" onChange={(event)=>{
                 setTitleName(event.target.value);
+            }}></input>
+            </fieldset>
+            <fieldset>
+            <label>Email: </label>
+            <input type="text" onChange={(event)=>{
+                setEmail(event.target.value);
             }}></input>
             </fieldset>
             <fieldset>
