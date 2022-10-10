@@ -71,7 +71,7 @@ function App() {
             </p>
             <form>
             <fieldset>
-            <label>Title: </label>
+            <label>Project Title: </label>
             <input type="text" onChange={(event)=>{
                 setTitleName(event.target.value);
             }}></input>
@@ -83,37 +83,25 @@ function App() {
             }}></input>
             </fieldset>
             <fieldset>
-            <label>Please give a description of your project</label>
+            <label>Please give a description of your project:</label>
             <textarea type="text" onChange={(event)=>{
                 setDescription(event.target.value);
             }}></textarea>
             </fieldset>
             <fieldset>
-            <label>Date</label>
-            <input type="text" onChange={(event)=>{
-                setDate(event.target.value);
-            }}></input>
-            </fieldset>
-            <fieldset>
-            <label>Status</label>
-            <input type="text" onChange={(event)=>{
-                setStatus(event.target.value);
-            }}></input>
-            </fieldset>
-            <fieldset>
-            <label>Please enter the name of your organization or institution</label>
+            <label>Please enter the name of your organization or institution:</label>
             <input type="text" onChange={(event)=>{
                 setInstitution(event.target.value);
             }}></input>
             </fieldset>
             <fieldset>
-            <label>Please enter your name</label>
+            <label>Please enter your name:</label>
             <input type="text" onChange={(event)=>{
                 setName(event.target.value);
             }}></input>
             </fieldset>
             <fieldset>
-            <label>Please enter a valid Phone Number that we can contact</label>
+            <label>Please enter a valid Phone Number that we can contact:</label>
             <input type="text" onChange={(event)=>{
                 setPhoneNumber(event.target.value);
             }}></input>
