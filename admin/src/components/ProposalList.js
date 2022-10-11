@@ -17,10 +17,10 @@ function ProposalList(props) {
     const [cssDropDown, setCssDropDown] = useState('hidden')
     const [proposalList, setProposalList] = useState([]);
 
-    let address = []
+    let address = ""
     for (let i = 0; i<proposalList.length;i++) {
         if (proposalList[i].status === filter.toLowerCase()){
-            address.push(proposalList[i].email);
+            address = address.concat(",",proposalList[i].email);
         }
     }
 
@@ -50,7 +50,8 @@ return(
 
 
 <p className="bigTitle " > {filter } Proposals</p>
-<div onClick={() =>console.log(address)} style={{visibility: filter === 'All'? 'hidden':'visible'}} onMouseEnter={()=>setCssIcon2('hover')} onMouseLeave={()=>setCssIcon2('away')} id="emailIconContainer"  className={`${cssIcon2} waves-effect`}><i id="EmailIcon" className="small material-icons">email</i></div>
+
+<a href={`mailto:${address}`} onClick={() =>console.log(address)} style={{visibility: filter === 'All'? 'hidden':'visible'}} onMouseEnter={()=>setCssIcon2('hover')} onMouseLeave={()=>setCssIcon2('away')} id="emailIconContainer"  className={`${cssIcon2} waves-effect`}><i id="EmailIcon" className="small material-icons">email</i></a>
 
 </div>
         
