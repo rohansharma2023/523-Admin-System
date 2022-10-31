@@ -88,9 +88,11 @@ p {
     height: 60px;
     background-color: #fdfcfc;
     border-color: #fdfcfc;
-    display: inline-block;
+    display: block;
     margin-top: -26px;
     margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 28px;
 }
 
@@ -110,7 +112,7 @@ form {
     display: flex;
     flex-direction: row;
     margin-top: 30px;
-    float: left
+    float: left;
     /* display: inline-flex; */
     /* padding: 10px; */
     /* justify-content: space-between; */
@@ -136,6 +138,15 @@ form {
     max-height: 40px;
     border-radius: 50%;
     /* position: fixed; */
+}
+
+.buttonContainer {
+    margin: 0;
+    position: absolute;
+    bottom: -120px;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 #fileContent {
