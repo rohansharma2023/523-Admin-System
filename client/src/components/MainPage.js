@@ -154,7 +154,7 @@ function MainPage() {
         </div>
         <p>
       <label>
-        <input style={{position:'relative',bottom:'0px'}} type="checkbox" onChange={() =>{
+        <input style={{}} type="checkbox" onChange={() =>{
             setAgree(!agree)        }}/>
         <span style={{color:'black', fontWeight:'600'}}>I Agree with the Terms and Conditions</span>
       </label>
