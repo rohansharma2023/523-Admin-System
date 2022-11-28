@@ -103,11 +103,11 @@ function MainPage() {
         bodyFormData.append('phone_number', phone_number)
         axios({
             method: "post",
-            url: "http://localhost:3001/insert",
+            url: "https://tame-teal-ray.cyclic.app/insert",
             data: bodyFormData,
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: { 'Content-Type': 'application/json' },
           })
-            .then(res => {
+            .then(function (response) {
               //handle success
               alert("Proposal Successfully Submitted!")
               window.location.reload(false);

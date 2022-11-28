@@ -11,7 +11,7 @@ export default function FileCard(props) {
         let data = {fileId: id}
         axios({
             method: "post",
-            url: "http://localhost:3001/download",
+            url: "https://tame-teal-ray.cyclic.app/download",
             data: qs.stringify(data),
             responseType: "blob",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

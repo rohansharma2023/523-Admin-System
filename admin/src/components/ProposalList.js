@@ -25,7 +25,7 @@ function ProposalList(props) {
     }
 
     useEffect(()=>{
-        axios.get("http://localhost:3001/read").then((res)=>{
+        axios.get("https://tame-teal-ray.cyclic.app/read").then((res)=>{
             setProposalList(res.data);
         });
     }, []);
