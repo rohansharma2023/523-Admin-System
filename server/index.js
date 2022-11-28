@@ -11,24 +11,25 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const app = express();
-
+const ObjectId = mongoose.Types.ObjectId;
 const proposalModel = require("./models/Proposal");
-
+const adminModel = require("./models/Admin")
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({ extended: false }));
 // Middleware
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(cors());
-
 const dbname = "proposal"
 const mongoURI = "mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/" + dbname + "?retryWrites=true&w=majority"
 const conn = mongoose.createConnection(mongoURI)
 mongoose.connect("mongodb+srv://rohansh:oajYzKJvFkbqCLOE@cluster0.jcroklm.mongodb.net/" + dbname + "?retryWrites=true&w=majority", {
     useNewUrlParser: true,
 });
-let gfs;
 conn.once('open', () => {
+    gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+        bucketName: 'uploads'
+    })
     gfs = Grid(conn.db, mongoose.mongo);
     gfs.collection('uploads')
 
@@ -62,12 +63,10 @@ app.post("/insert", upload.any('file'), async(req, res) => {
 
     res.json({ file: req.files })
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
 
-    date = mm + '/' + dd + '/' + yyyy;
-    // res.json({ file: req.file })
+
+    date = today.toString()
+        // res.json({ file: req.file })
     const title = req.body.title;
     const description = req.body.description;
     const email = req.body.email;
@@ -76,11 +75,14 @@ app.post("/insert", upload.any('file'), async(req, res) => {
     const name = req.body.name;
     const phone_number = req.body.phone_number;
     var fileString = ''
+    var fileNames = ''
+
     for (let i = 0; i < req.files.length; i++) {
         fileString += `${req.files[i].id},`
+        fileNames += `${req.files[i].originalname},`
     }
     // const file = req.file.path;
-    const proposal = new proposalModel({ title: title ? title : "Not Provided", description: description ? description : "Not Provided", email: email ? email : "Not Provided", date: date, status: "open", institution: institution ? institution : "Not Provided", name: name ? name : "Not Provided", phone_number: phone_number ? phone_number : "Not Provided", file: fileString });
+    const proposal = new proposalModel({ title: title ? title : "Not Provided", description: description ? description : "Not Provided", email: email ? email : "Not Provided", date: date, status: "open", institution: institution ? institution : "Not Provided", name: name ? name : "Not Provided", phone_number: phone_number ? phone_number : "Not Provided", fileId: fileString, fileName: fileNames });
     proposal.save().then(res => {
             res.send({
                 message: "Proposal Added Successfully!"
@@ -96,6 +98,32 @@ app.post("/insert", upload.any('file'), async(req, res) => {
         //     console.log(err);
         // }
 });
+// endpoint for downloading a specified attachment
+app.post("/login", async(req, res) => {
+    try {
+        let result = await adminModel.exists({ username: req.body.username, password: req.body.password });
+        res.send(result)
+
+    } catch (err) {
+        res.status(404).send(err)
+    }
+})
+
+// endpoint for requesting download of an attachment
+app.post("/download", async(req, res) => {
+    gfs.files.findOne({ _id: ObjectId(req.body.fileId) }, function(err, file) {
+        if (err) {
+            return res.status(400).send(err);
+        } else if (!file) {
+            return res.status(404).send('Error on the database looking for the file.');
+        }
+        res.set('Content-Type', file.contentType);
+        res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
+
+        const readStream = gridfsBucket.openDownloadStream(ObjectId(req.body.fileId));
+        readStream.pipe(res);
+    });
+})
 
 // grab all data from database
 app.get("/read", async(req, res) => {
@@ -144,15 +172,22 @@ app.put("/update", async(req, res) => {
     }
 });
 
-// app.delete("/delete/:id", async(req, res)=>{
-//     try {
-//         const id = req.params.id;
-//         await foodModel.findByIdAndRemove(id).exec();
-//         res.send("deleted");
-//     } catch(err) {
-//         console.log(err);
-//     }
-// });
+// delete a specified proposal and its attachments
+app.post("/delete", async(req, res) => {
+    try {
+        fileId = JSON.parse(req.body.fileId)
+        await proposalModel.deleteOne({ _id: mongoose.Types.ObjectId(req.body.id) });
+        if (fileId) {
+            for (let i = 0; i < fileId.length; i++) {
+                await gridfsBucket.delete(ObjectId(fileId[i]));
+            }
+        }
+
+        res.send("deleted");
+    } catch (err) {
+        console.log(err);
+    }
+});
 
 
 

@@ -7,34 +7,33 @@ import Proposal from './components/Proposal'
 import Error from "./components/Error";
 import Login from './components/Login'
 import ProposalList from './components/ProposalList'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 const axios = require('axios').default;
+
 function App() {
-
-    const [loggedIn, setLoggedIN] = useState(true)
-
-    
-    
-        
+    const navigate = useNavigate();
+    const changeLoggedIn = () =>{
+        alert(loggedIn? "Log out successful." : "Log in successful.")
+        setLoggedIn (!loggedIn)
+    }
+    const [loggedIn, setLoggedIn] = useState(false)
+    useEffect(()=>{
+        // get logged in status from local storage and if logged in, set loggedIn to true
+        const loggedInUser = localStorage.getItem("user")
+        if (loggedInUser){
+            setLoggedIn(true)
+        }
+    },[])
             return(
         <div className="App">
-
-<Navbar/>
+<Navbar loggedIn = {loggedIn} change = {changeLoggedIn}/>
             <Routes>
-
-        <Route path="/" element={<ProposalList/>} />
-        <Route path="proposal/:id" element={<Proposal />} />
-        <Route path="proposal" element={<Error message = {"Please Provide the ID of the Desired Proposal."}/>} />
+        <Route path="/" element={loggedIn ? <ProposalList/> : <Error message = {"You need to log in to see all proposals."}/>} />
+        <Route path="proposal/:id" element={ <Proposal loggedIn = {loggedIn}/>} />
+        <Route path="proposal" element={<Error message = {"Please Provide the ID of the Desired Proposal."}/> } />
         <Route path="*" element={<Error message = {"This Page Does Not Exist."}/>} />
-        <Route path="/login" element={<Login/>} />
-
-
-
-
-
+        <Route path="/login" element={<Login loggedIn = {loggedIn} change = {changeLoggedIn} />} />
       </Routes>
-            
-            {/* <Proposal/> */}
         </div>
     );
 }

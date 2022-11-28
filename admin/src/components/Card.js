@@ -14,10 +14,10 @@ function Card(props) {
             <p className="email">From: {props.value.email} </p>
 
             <div className="description">{props.value.description} 
-            
+
             </div>
             <div className="dateandstatus">
-            Date Posted: {props.value.date}    <span className="newstatus" style={{color: `${color}`}}> &nbsp;&nbsp;&nbsp; {status.charAt(0).toUpperCase()+ status.slice(1)}</span>
+            Date Posted: {`${props.value.date.split(" ")[1] + " "  + props.value.date.split(" ")[2] + ", " + props.value.date.split(" ")[3]}`}    <span className="newstatus" style={{color: `${color}`}}> &nbsp;&nbsp;&nbsp; {status.charAt(0).toUpperCase()+ status.slice(1)}</span>
             </div>
 
         </div>
@@ -25,5 +25,4 @@ function Card(props) {
         </>
     );
 }
-
 export default Card;

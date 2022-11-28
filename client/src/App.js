@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 // import {Router, Route, Link} from "react-router-dom";
 // import './SubmissionCmpl.js';
 import MainPage from "./components/MainPage";
-import Conditions from "./components/Conditions";
 import M from "materialize-css";
 const axios = require('axios').default;
 

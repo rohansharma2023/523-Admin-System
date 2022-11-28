@@ -33,7 +33,11 @@ const ProposalSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    file: {
+    fileId: {
+        type: String,
+        required: false,
+    },
+    fileName: {
         type: String,
         required: false,
     },

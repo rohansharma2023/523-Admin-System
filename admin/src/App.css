@@ -1,7 +1,17 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .outside {
     display: block;
+}
+
+#fileContent {
+    width: 50%
+}
+
+@media (max-width: 550px) {
+    #fileContent {
+        width: 100%
+    }
 }

@@ -26,7 +26,6 @@ function ProposalList(props) {
 
     useEffect(()=>{
         axios.get("http://localhost:3001/read").then((res)=>{
-            // console.log(res);
             setProposalList(res.data);
         });
     }, []);
@@ -50,29 +49,24 @@ return(
 
 
 <p className="bigTitle " > {filter } Proposals</p>
-
 <a href={`mailto:${address}`} onClick={() =>console.log(address)} style={{visibility: filter === 'All'? 'hidden':'visible'}} onMouseEnter={()=>setCssIcon2('hover')} onMouseLeave={()=>setCssIcon2('away')} id="emailIconContainer"  className={`${cssIcon2} waves-effect`}><i id="EmailIcon" className="small material-icons">email</i></a>
 
 </div>
-        
-    {/* <div className="filter waves-effect"><i className="material-icons small">filter_list</i> <span>Accepted</span>   </div> */}
-    {/* <div className="filter" > <p style={{position:'relative',top:'6px'}}>Filter: Accepted</p></div> */}
     <div className="divider"></div>
 
             
             { 
-            proposalList.map((val, key)=>{
+            proposalList.sort((a, b) =>{
+
+
+                return new Date(b.date) - new Date(a.date);
+            }).map((val, key)=>{
+                
                 if (filter === 'All' || val.status === filter.toLowerCase() ){
                 return (
                     <div key = {key}>
                         <Card
                         value = {val} 
-                            // id = {val._id}
-                            // title = {val.title} 
-                            // description = {val.description}
-                            // email = {val.email}
-                            // date = {val.date}
-                            // status = {val.status}
                         />
                     </div>
                 );}
