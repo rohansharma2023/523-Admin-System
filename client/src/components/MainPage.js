@@ -11,7 +11,6 @@ import { MdFilePresent } from 'react-icons/md';
 
 import { BsCloudUploadFill } from 'react-icons/bs';
 
-
 const axios = require('axios').default;
 
 function MainPage() {
@@ -103,18 +102,20 @@ function MainPage() {
         bodyFormData.append('phone_number', phone_number)
         axios({
             method: "post",
-            url: "https://tame-teal-ray.cyclic.app/insert",
+            url: "https://elated-deer-cap.cyclic.app/insert",
             data: bodyFormData,
-            headers: { 'Content-Type': 'application/json' },
+            headers: { "Content-Type": "multipart/form-data" },
           })
             .then(function (response) {
               //handle success
               alert("Proposal Successfully Submitted!")
-              window.location.reload(false);
+              //window.location.reload(false);
+              console.log(response)
             })
             .catch(function (response) {
               //handle error
               alert("An Error Occured. Please Try Again.")
+              console.log(response)
             });
         }
     }

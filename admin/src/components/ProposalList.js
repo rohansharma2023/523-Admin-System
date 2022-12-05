@@ -25,7 +25,7 @@ function ProposalList(props) {
     }
 
     useEffect(()=>{
-        axios.get("https://tame-teal-ray.cyclic.app/read").then((res)=>{
+        axios.get("https://elated-deer-cap.cyclic.app/read").then((res)=>{
             setProposalList(res.data);
         });
     }, []);

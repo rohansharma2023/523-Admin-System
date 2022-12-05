@@ -117,11 +117,15 @@ app.post("/download", async(req, res) => {
         } else if (!file) {
             return res.status(404).send('Error on the database looking for the file.');
         }
+        
         res.set('Content-Type', file.contentType);
         res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
-
+        
         const readStream = gridfsBucket.openDownloadStream(ObjectId(req.body.fileId));
         readStream.pipe(res);
+
+        console.log("logging the res of download");
+        console.log(res);
     });
 })
 

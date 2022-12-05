@@ -11,19 +11,20 @@ export default function FileCard(props) {
         let data = {fileId: id}
         axios({
             method: "post",
-            url: "https://tame-teal-ray.cyclic.app/download",
+            url: "https://elated-deer-cap.cyclic.app/download",
             data: qs.stringify(data),
-            responseType: "blob",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            responseType: "blob",
           })
             .then(res => {
-                console.log(res)
+                console.log(res);
                 filesaver.saveAs(res.data, name);
 
             })
             .catch(function (response) {
               //handle error
               alert("An error occured when looking for the file in the database.")
+              console.log(response)
             });
     
     }
