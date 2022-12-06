@@ -11,7 +11,7 @@ export default function FileCard(props) {
         let data = {fileId: id}
         axios({
             method: "post",
-            url: "http://localhost:3001/download",  //change this link to hosted server link to test it on hosted server
+            url: "https://bright-frog-bedclothes.cyclic.app/download",  //change this link to hosted server link to test it on hosted server
             data: qs.stringify(data),
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             responseType: "blob",

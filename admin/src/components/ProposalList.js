@@ -25,7 +25,7 @@ function ProposalList(props) {
     }
 
     useEffect(()=>{
-        axios.get("https://elated-deer-cap.cyclic.app/read").then((res)=>{
+        axios.get("https://bright-frog-bedclothes.cyclic.app/read").then((res)=>{
             setProposalList(res.data);
         });
     }, []);

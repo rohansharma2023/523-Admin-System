@@ -95,7 +95,7 @@ function MainPage() {
         bodyFormData.append('phone_number', phone_number)
         axios({
             method: "post",
-            url: "https://elated-deer-cap.cyclic.app/insert",
+            url: "https://bright-frog-bedclothes.cyclic.app/insert",
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
           })

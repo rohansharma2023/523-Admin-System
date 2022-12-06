@@ -18,7 +18,7 @@ function Login(props) {
 
         await axios({
             method: "post",
-            url: "https://elated-deer-cap.cyclic.app/login",
+            url: "https://bright-frog-bedclothes.cyclic.app/login",
             data: qs.stringify(data),
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
 

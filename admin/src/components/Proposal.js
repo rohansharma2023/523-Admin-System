@@ -36,11 +36,11 @@ function Proposal(props) {
 
         try {
             if (!status || status.toLowerCase() !== newStatus){
-                axios.put("https://elated-deer-cap.cyclic.app/update", {
+                axios.put("https://bright-frog-bedclothes.cyclic.app/update", {
                     id: params.id,
                     newStatus: newStatus,
                 }).then((res)=>{
-                    axios.get(`https://elated-deer-cap.cyclic.app/fetchById/${params.id}`).then((res)=>{
+                    axios.get(`https://bright-frog-bedclothes.cyclic.app/fetchById/${params.id}`).then((res)=>{
                         
                         setRecord(res.data[0])
                         setStatus(res.data[0].status)
@@ -55,7 +55,7 @@ function Proposal(props) {
     // function for deleting the proposal and its attachments
     const deleteProposal = (id) => {
         try {
-            axios.post(`https://elated-deer-cap.cyclic.app/delete`, {
+            axios.post(`https://bright-frog-bedclothes.cyclic.app/delete`, {
                 id: params.id,
                 fileId : JSON.stringify(file)
             }).then((res)=>{
@@ -81,7 +81,7 @@ function Proposal(props) {
     
     useEffect(()=>{
     // function for fetching the proposal according to the given ID   
-        axios.get(`https://elated-deer-cap.cyclic.app/fetchById/${params.id}`).then((res)=>{
+        axios.get(`https://bright-frog-bedclothes.cyclic.app/fetchById/${params.id}`).then((res)=>{
             if(!res.data[0]){
                 setRecord("error")
                 return
