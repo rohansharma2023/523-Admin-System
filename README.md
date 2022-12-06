@@ -8,15 +8,13 @@ Go to the backend folder to run server\
 $ cd server\
 $ node index.js\
 \
-Change directory to go to the admin folder to run the admin page\
-$ cd .. (to go back a folder)\
+Open up a new terminal and go to the admin folder to run the admin page\
 Make sure you are in the parent folder when you go to the admin folder\
 Open terminal to do npm start\
 $ cd admin\
 $ npm start\
 \
-Then do the same for client folder\
-$ cd ..\
+Then open up a new terminal and go to the client folder to run the client page\
 $ cd client\
 $ npm start\
 Make sure to keep the server running when you run the frontend websites\
