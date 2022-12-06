@@ -22,5 +22,5 @@ $ npm start\
 Make sure to keep the server running when you run the frontend websites\
 \
 Hosted frontend\
-https://comp523projectproposal.netlify.app\
+https://comp523projectproposal.netlify.app \
 https://comp523adminsystem.netlify.app
