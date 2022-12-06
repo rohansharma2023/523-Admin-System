@@ -66,7 +66,6 @@ app.post("/insert", upload.any('file'), async(req, res) => {
 
 
     date = today.toString()
-        // res.json({ file: req.file })
     const title = req.body.title;
     const description = req.body.description;
     const email = req.body.email;
@@ -81,7 +80,7 @@ app.post("/insert", upload.any('file'), async(req, res) => {
         fileString += `${req.files[i].id},`
         fileNames += `${req.files[i].originalname},`
     }
-    // const file = req.file.path;
+    
     const proposal = new proposalModel({ title: title ? title : "Not Provided", description: description ? description : "Not Provided", email: email ? email : "Not Provided", date: date, status: "open", institution: institution ? institution : "Not Provided", name: name ? name : "Not Provided", phone_number: phone_number ? phone_number : "Not Provided", fileId: fileString, fileName: fileNames });
     proposal.save().then(res => {
             res.send({
@@ -91,12 +90,6 @@ app.post("/insert", upload.any('file'), async(req, res) => {
         .catch(err => {
             console.log(err)
         })
-        // try {
-        //     await proposal.save();
-        //     res.send("inserted data");
-        // } catch (err) {
-        //     console.log(err);
-        // }
 });
 // endpoint for downloading a specified attachment
 app.post("/login", async(req, res) => {
@@ -152,8 +145,6 @@ app.get("/fetchById/:id", async(req, res) => {
             if (err) {
                 res.send(err);
             }
-
-
             res.send(result);
         })
     } catch (err) {
@@ -192,8 +183,6 @@ app.post("/delete", async(req, res) => {
         console.log(err);
     }
 });
-
-
 
 
 

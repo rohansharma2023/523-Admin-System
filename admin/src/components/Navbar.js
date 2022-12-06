@@ -7,36 +7,37 @@ import { Routes, Route, Link } from "react-router-dom";
 
 function Navbar(props) {
 
-// function for logging out and cleaning the record in local storage
-const logout = () =>{
-    if (window.confirm("Are you sure that you want to log out?")){
-        localStorage.clear()
-        let a =  props.change
-        a()
+    // function for logging out and cleaning the record in local storage
+    const logout = () =>{
+        if (window.confirm("Are you sure that you want to log out?")){
+            localStorage.clear()
+            let a =  props.change
+            a()
 
+        }
     }
-}
 
-// function for choosing to display log in or log out in navbar depending on log in state
-const rendering = () =>{
-    if (props.loggedIn){
-        return <>
-    <div  onClick = {() =>logout()}>
-    <div className="iconsLogin"> <FiLogOut /></div>
+    // function for choosing to display log in or log out in navbar depending on log in state
+    const rendering = () =>{
+        if (props.loggedIn){
+            return <>
+                <div  onClick = {() =>logout()}>
+                <div className="iconsLogin"> <FiLogOut /></div>
 
-    <div className="optionName">Log Out</div>
-    </div>
-    </>}
-else{
-    return <>
-    <div>
-    <div className="iconsLogin"> <FiLogIn /></div>
+                <div className="optionName">Log Out</div>
+                </div>
+            </>}
+        else{
+            return <>
+                <div>
+                <div className="iconsLogin"> <FiLogIn /></div>
 
-    <div className="optionName">Log In</div>
-    </div>
-    </>
-}
-}
+                <div className="optionName">Log In</div>
+                </div>
+            </>
+        }
+    }
+
     return (
         <>
         <div className="container">

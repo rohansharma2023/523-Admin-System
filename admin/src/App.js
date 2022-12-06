@@ -17,6 +17,7 @@ function App() {
         setLoggedIn (!loggedIn)
     }
     const [loggedIn, setLoggedIn] = useState(false)
+    
     useEffect(()=>{
         // get logged in status from local storage and if logged in, set loggedIn to true
         const loggedInUser = localStorage.getItem("user")
@@ -24,16 +25,17 @@ function App() {
             setLoggedIn(true)
         }
     },[])
-            return(
+
+    return(
         <div className="App">
-<Navbar loggedIn = {loggedIn} change = {changeLoggedIn}/>
-            <Routes>
-        <Route path="/" element={loggedIn ? <ProposalList/> : <Error message = {"You need to log in to see all proposals."}/>} />
-        <Route path="proposal/:id" element={ <Proposal loggedIn = {loggedIn}/>} />
-        <Route path="proposal" element={<Error message = {"Please Provide the ID of the Desired Proposal."}/> } />
-        <Route path="*" element={<Error message = {"This Page Does Not Exist."}/>} />
-        <Route path="/login" element={<Login loggedIn = {loggedIn} change = {changeLoggedIn} />} />
-      </Routes>
+        <Navbar loggedIn = {loggedIn} change = {changeLoggedIn}/>
+        <Routes>
+            <Route path="/" element={loggedIn ? <ProposalList/> : <Error message = {"You need to log in to see all proposals."}/>} />
+            <Route path="proposal/:id" element={ <Proposal loggedIn = {loggedIn}/>} />
+            <Route path="proposal" element={<Error message = {"Please Provide the ID of the Desired Proposal."}/> } />
+            <Route path="*" element={<Error message = {"This Page Does Not Exist."}/>} />
+            <Route path="/login" element={<Login loggedIn = {loggedIn} change = {changeLoggedIn} />} />
+        </Routes>
         </div>
     );
 }
