@@ -10,8 +10,8 @@ export default function FileCard(props) {
         console.log(id)
         let data = {fileId: id}
         axios({
-            method: "post",
-            url: "https://bright-frog-bedclothes.cyclic.app/download",  //change this link to hosted server link to test it on hosted server
+            method: "post",                                             // locally download file works, but does not work on hosted server
+            url: "https://bright-frog-bedclothes.cyclic.app/download",  // change this link to local server link to test it locally; http://localhost:3001/download
             data: qs.stringify(data),
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             responseType: "blob",
