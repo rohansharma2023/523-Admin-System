@@ -9,13 +9,18 @@ $ cd server\
 $ node index.js\
 \
 Change directory to go to the admin folder to run the admin page\
-$cd .. (to go back a folder)\
+$ cd .. (to go back a folder)\
 Make sure you are in the parent folder when you go to the admin folder\
 Open terminal to do npm start\
 $ cd admin\
 $ npm start\
+\
 Then do the same for client folder\
-$cd ..\
+$ cd ..\
 $ cd client\
 $ npm start\
 Make sure to keep the server running when you run the frontend websites\
+\
+Hosted frontend\
+https://comp523projectproposal.netlify.app\
+https://comp523adminsystem.netlify.app
