@@ -15,6 +15,7 @@ Open terminal to do npm start\
 $ cd admin\
 $ npm start\
 Then do the same for client folder\
+$cd ..\
 $ cd client\
-$ npmstart\
+$ npm start\
 Make sure to keep the server running when you run the frontend websites\
