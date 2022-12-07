@@ -91,7 +91,7 @@ app.post("/insert", upload.any('file'), async(req, res) => {
             console.log(err)
         })
 });
-// endpoint for downloading a specified attachment
+// endpoint for logging into website
 app.post("/login", async(req, res) => {
     try {
         let result = await adminModel.exists({ username: req.body.username, password: req.body.password });
